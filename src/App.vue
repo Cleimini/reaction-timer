@@ -1,11 +1,38 @@
 <template>
   <h1>Reaction Timer</h1>
+
+  <button @click="startGame" :disabled="inSession">START GAME</button>
+
+  <Block 
+    v-if="inSession"
+    
+    :delayAmount="delayAmount"
+  />
 </template>
 
 <script>
+  import Block from './components/Block.vue'
+
   export default {
+    components: {
+      Block
+    },
+
+    data() {
+      return {
+        delayAmount: null,
+        inSession: false
+      }
+    },
+
     name: 'App',
-    components: {}
+
+    methods: {
+      startGame() {
+        this.delayAmount = 2000 + Math.random() * 5000,
+        this.inSession = true
+      }
+    }
   }
 </script>
 
