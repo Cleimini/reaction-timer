@@ -3,11 +3,7 @@
 
   <button @click="startGame" :disabled="inSession">START GAME</button>
 
-  <Block 
-    v-if="inSession"
-    
-    :delayAmount="delayAmount"
-  />
+  <Block :delayAmount="delayAmount" v-if="inSession" />
 </template>
 
 <script>
@@ -18,13 +14,6 @@
       Block
     },
 
-    data() {
-      return {
-        delayAmount: null,
-        inSession: false
-      }
-    },
-
     name: 'App',
 
     methods: {
@@ -32,7 +21,14 @@
         this.delayAmount = 2000 + Math.random() * 5000,
         this.inSession = true
       }
-    }
+    },
+
+    data() {
+      return {
+        delayAmount: null,
+        inSession: false
+      }
+    },
   }
 </script>
 
