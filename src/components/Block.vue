@@ -1,22 +1,37 @@
 <template>
-  <div class="block" v-if="showBlock">
+  <div class="block" @click="stopTimer" v-if="showBlock">
     <span>Click Me!</span>
   </div>
 </template>
 
 <script>
   export default {
+    methods: {
+      startTimer() {
+        this.timer = setInterval(() => {
+          this.reactionTime + 10
+        }, 10)
+      },
+
+      stopTimer() {
+        clearInterval(this.timer)
+      }
+    },
+
     props: ['delayAmount'],
 
     data() {
       return {
-        showBlock: false
+        reactionTime: 0,
+        showBlock: false,
+        timer: null
       }
     },
   
     mounted() {
       setTimeout(() => {
         this.showBlock = true
+        this.startTimer()
       }, this.delayAmount)
     }
   }
