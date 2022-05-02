@@ -46,6 +46,23 @@
 </script>
 
 <style>
+  button {
+    background: #0faf87;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 16px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    margin: 10px;
+  }
+
+  button[disabled] {
+    cursor: not-allowed;
+    opacity: 0.2;
+  }
+
   #app {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
