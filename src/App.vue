@@ -3,32 +3,45 @@
 
   <button @click="startGame" :disabled="inSession">START GAME</button>
 
-  <Block :delayAmount="delayAmount" v-if="inSession" />
+  <Block :delayAmount="delayAmount" @stop="stopGame" v-if="inSession" />
+
+  <Result v-if="showResults" :finalScore="score" />
 </template>
 
 <script>
   import Block from './components/Block.vue'
+  import Result from './components/Result.vue'
 
   export default {
     components: {
-      Block
+      Block,
+      Result
     },
 
     name: 'App',
 
     methods: {
+      stopGame(reactionTime) {
+        this.inSession = false
+        this.score = reactionTime
+        this.showResults = true
+      },
+
       startGame() {
-        this.delayAmount = 2000 + Math.random() * 5000,
+        this.delayAmount = 2000 + Math.random() * 5000
         this.inSession = true
+        this.showResults = false
       }
     },
 
     data() {
       return {
         delayAmount: null,
-        inSession: false
+        inSession: false,
+        score: null,
+        showResults: false
       }
-    },
+    }
   }
 </script>
 

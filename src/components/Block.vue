@@ -9,12 +9,14 @@
     methods: {
       startTimer() {
         this.timer = setInterval(() => {
-          this.reactionTime + 10
+          this.reactionTime += 10
         }, 10)
       },
 
       stopTimer() {
         clearInterval(this.timer)
+
+        this.$emit('stop', this.reactionTime)
       }
     },
 
@@ -37,7 +39,7 @@
   }
 </script>
 
-<style>
+<style scoped>
   .block {
     background: #0faf87;
     border-radius: 20px;
