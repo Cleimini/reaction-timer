@@ -14,9 +14,9 @@
     },
 
     mounted() {
-      if (this.score < 250) {
+      if (this.finalScore < 250) {
         this.rank = 'Fast Reaction'
-      } else if (this.score < 400) {
+      } else if (this.finalScore < 400) {
         this.rank = 'Good Reaction'
       } else {
         this.rank = 'Slow Reaction'
